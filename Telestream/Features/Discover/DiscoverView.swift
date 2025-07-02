@@ -9,16 +9,21 @@ import SwiftUI
 
 struct DiscoverView: View {
 
+  @ObservedObject var viewmodel: DiscoverViewmodel
+
     var body: some View {
       List{
-        ForEach(PreviewData.categories, id: \.name) { category in
+        ForEach(viewmodel.categories, id: \.name) { category in
           ComponentDiscoverCategory(category: category)
         }.listRowInsets(EdgeInsets())
       }.listStyle(.inset)
         .navigationTitle("Discover")
+        .onAppear {
+          viewmodel.refresh()
+        }
     }
 }
 
 #Preview {
-    DiscoverView()
+    DiscoverView(viewmodel: DiscoverViewmodel())
 }

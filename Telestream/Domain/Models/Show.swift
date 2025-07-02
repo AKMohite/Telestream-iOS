@@ -11,4 +11,5 @@ struct Show: Identifiable {
   let id: String
   let title: String
   let image: String
+  let cover: String
 }
