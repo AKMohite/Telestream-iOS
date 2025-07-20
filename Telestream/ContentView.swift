@@ -9,7 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-      DiscoverView(viewmodel: DiscoverViewmodel())
+      TabView {
+        DiscoverView(viewmodel: DiscoverViewmodel())
+          .tabItem {
+            Label("Explore", systemImage: "sparkles.tv.fill")
+          }
+        CollectionsView()
+          .tabItem {
+            Label("Collections" ,systemImage: "square.stack.fill")
+          }
+        SettingsView()
+          .tabItem {
+            Label("Settings", systemImage: "gearshape.fill")
+          }
+      }.accentColor(.purple)
     }
 }
 
