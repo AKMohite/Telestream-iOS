@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DiscoverView: View {
 
-  @ObservedObject var viewmodel: DiscoverViewmodel
+  @StateObject var viewmodel: DiscoverViewmodel
 
     var body: some View {
       List{
@@ -18,9 +18,12 @@ struct DiscoverView: View {
         }.listRowInsets(EdgeInsets())
       }.listStyle(.inset)
         .navigationTitle("Discover")
-        .task {
-          await viewmodel.refresh()
+        .onAppear {
+          viewmodel.loadSections()
         }
+//        .task {
+//          await viewmodel.refresh()
+//        }
     }
 }
 

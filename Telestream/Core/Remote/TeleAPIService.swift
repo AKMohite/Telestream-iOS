@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 final class TeleAPIService {
 
@@ -21,6 +22,17 @@ final class TeleAPIService {
     let (data, urlResponse) = try await session.data(from: url)
     let response = try JSONDecoder().decode(PaginatedShowDTO.self, from: data)
     return response.results
+  }
+
+  func getTrending() -> AnyPublisher<[ShowDTO], Error> {
+    let urlString = "\(baseUrl)/trending/tv/day?language=en-US&api_key=\(apikey)"
+    let url = URL(string: urlString)!
+    return session.dataTaskPublisher(for: url)
+      .map(\.data)
+      .decode(type: PaginatedShowDTO.self, decoder: JSONDecoder())
+      .map(\.results)
+      .receive(on: DispatchQueue.main)
+      .eraseToAnyPublisher()
   }
 
 }
