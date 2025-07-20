@@ -18,8 +18,8 @@ struct DiscoverView: View {
         }.listRowInsets(EdgeInsets())
       }.listStyle(.inset)
         .navigationTitle("Discover")
-        .onAppear {
-          viewmodel.refresh()
+        .task {
+          await viewmodel.refresh()
         }
     }
 }

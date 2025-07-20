@@ -8,7 +8,7 @@
 import Foundation
 
 struct Show: Identifiable {
-  let id: String
+  let id: Int
   let title: String
   let image: String
   let cover: String
