@@ -6,17 +6,53 @@
 //
 
 import SwiftUI
-import DomainLayer
+import DesignSystem
 
 public struct DiscoverView: View {
-    public init() {} // This allows other modules to create our view
+    @StateObject private var viewModel = DiscoverViewModel()
+
+    public init() {}
 
     public var body: some View {
-        // For now, it's just a placeholder.
-        // We'll build this out in Sprint 2.
-        NavigationStack {
-            Text("Discover Feature")
-                .navigationTitle("Discover")
+        ZStack {
+            Color.backgroundPrimary
+                .ignoresSafeArea()
+
+            NavigationStack {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 24) {
+                        ForEach(DiscoverCategory.allCases, id: \.self) { category in
+                            VStack(alignment: .leading) {
+                                Text(category.title)
+                                    .font(.headline)
+                                    .foregroundColor(.black)
+                                    .padding(.horizontal)
+
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(spacing: 16) {
+                                        if let shows = viewModel.showsByCategory[category] {
+                                            ForEach(shows, id: \.id) { show in
+                                                Text(show.title)
+                                                    .foregroundColor(.white)
+                                                    .padding()
+                                                    .background(Color.gray.opacity(0.2))
+                                                    .cornerRadius(8)
+                                            }
+                                        }
+                                    }
+                                    .padding(.horizontal)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .navigationTitle("Discover")
+            .navigationBarTitleDisplayMode(.large)
+        }
+        .onAppear {
+            viewModel.fetchAllCategories()
         }
     }
 }

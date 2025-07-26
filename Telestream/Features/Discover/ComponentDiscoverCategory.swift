@@ -21,10 +21,10 @@ struct ComponentDiscoverCategory: View {
 
         ScrollView(.horizontal, showsIndicators: false) {
           HStack(alignment: .top, spacing: 0) {
-            ForEach(category.shows) { show in
-              ComponentShow(show: show)
-                .padding(.leading, 4)
-            }
+//            ForEach(category.shows) { show in
+//              ComponentShow(show: show)
+//                .padding(.leading, 4)
+//            }
           }
         }
         .frame(height: 250)
@@ -32,6 +32,6 @@ struct ComponentDiscoverCategory: View {
     }
 }
 
-#Preview {
-  ComponentDiscoverCategory(category: PreviewData.categories[0])
-}
+//#Preview {
+//  ComponentDiscoverCategory(category: PreviewData.categories[0])
+//}

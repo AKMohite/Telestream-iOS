@@ -6,21 +6,25 @@
 //
 
 import SwiftUI
+import DomainLayer
 
 struct ComponentShow: View {
 
-  let show: Show
+//  let show: Show
 
     var body: some View {
-      AsyncImage(url: URL(string: show.image)) { image in
-        image.image?.resizable()
-          .scaledToFill()
+//      AsyncImage(url: URL(string: show.image)) { image in
+//        image.image?.resizable()
+//          .scaledToFill()
+//      }
+//        .frame(width: 200, height: 250)
+//        .background(.gray.opacity(0.25))
+//        .overlay {
+//          TitleOverlay(title: show.title)
+//        }.cornerRadius(8)
+      ZStack {
+        
       }
-        .frame(width: 200, height: 250)
-        .background(.gray.opacity(0.25))
-        .overlay {
-          TitleOverlay(title: show.title)
-        }.cornerRadius(8)
     }
 }
 
@@ -45,6 +49,6 @@ private struct TitleOverlay: View {
   }
 }
 
-#Preview {
-  ComponentShow(show: PreviewData.categoryShows[0])
-}
+//#Preview {
+//  ComponentShow(show: PreviewData.categoryShows[0])
+//}

@@ -7,11 +7,18 @@
 
 import Foundation
 
-struct Show: Identifiable {
-  let id: Int
-  let title: String
+public struct Show: Identifiable {
+  public let id: Int
+  public let title: String
   let backdropPath: String?
   let posterPath: String?
+
+  public init(id: Int, title: String, posterPath: String?, backdropPath: String?) {
+          self.id = id
+          self.title = title
+          self.posterPath = posterPath
+          self.backdropPath = backdropPath
+      }
 
   private let imageBaseURL = "https://image.tmdb.org/t/p/w500"
 

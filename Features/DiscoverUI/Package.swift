@@ -12,12 +12,13 @@ let package = Package(
     dependencies: [
         // Features depend on our Core layers
         .package(path: "../../Core/DataLayer"),
-        .package(path: "../../Core/DomainLayer")
+        .package(path: "../../Core/DomainLayer"),
+        .package(path: "../../Core/DesignSystem")
     ],
     targets: [
         .target(
             name: "DiscoverUI",
-            dependencies: ["DataLayer", "DomainLayer"]
+            dependencies: ["DataLayer", "DomainLayer", "DesignSystem"]
         ),
         .testTarget(
             name: "DiscoverUITests",

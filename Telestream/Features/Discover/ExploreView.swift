@@ -9,17 +9,17 @@ import SwiftUI
 
 struct ExploreView: View {
 
-  @StateObject var viewmodel: DiscoverViewmodel
+  @StateObject var viewmodel: ExploreViewmodel
 
     var body: some View {
       List{
-        ForEach(viewmodel.categories, id: \.name) { category in
-          ComponentDiscoverCategory(category: category)
-        }.listRowInsets(EdgeInsets())
+//        ForEach(viewmodel.categories, id: \.name) { category in
+//          ComponentDiscoverCategory(category: category)
+//        }.listRowInsets(EdgeInsets())
       }.listStyle(.inset)
         .navigationTitle("Discover")
         .onAppear {
-          viewmodel.loadSections()
+//          viewmodel.loadSections()
         }
 //        .task {
 //          await viewmodel.refresh()
@@ -28,5 +28,5 @@ struct ExploreView: View {
 }
 
 #Preview {
-  ExploreView(viewmodel: DiscoverViewmodel())
+  ExploreView(viewmodel: ExploreViewmodel())
 }

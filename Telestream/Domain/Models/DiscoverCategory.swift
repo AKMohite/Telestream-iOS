@@ -9,5 +9,5 @@ import Foundation
 
 struct DiscoverCategory {
   let name: String
-  let shows: [Show]
+//  let shows: [Show]
 }
