@@ -1,5 +1,5 @@
 //
-//  DiscoverView.swift
+//  ExploreView.swift
 //  Telestream
 //
 //  Created by Ashish Mohite on 22/02/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DiscoverView: View {
+struct ExploreView: View {
 
   @StateObject var viewmodel: DiscoverViewmodel
 
@@ -28,5 +28,5 @@ struct DiscoverView: View {
 }
 
 #Preview {
-    DiscoverView(viewmodel: DiscoverViewmodel())
+  ExploreView(viewmodel: DiscoverViewmodel())
 }

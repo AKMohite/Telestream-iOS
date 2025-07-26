@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import DiscoverUI
 
 struct ContentView: View {
     var body: some View {
       TabView {
-        DiscoverView(viewmodel: DiscoverViewmodel())
+        DiscoverView()
           .tabItem {
             Label("Explore", systemImage: "sparkles.tv.fill")
           }
