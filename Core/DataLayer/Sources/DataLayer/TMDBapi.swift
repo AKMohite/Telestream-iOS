@@ -11,10 +11,16 @@ import Combine
 import DomainLayer
 
 public final class TMDBapi: APIClient {
-  
-    private let apiKey = "YOUR_TMDB_API_KEY_HERE"
 
-    private let baseUrl = "https://api.themoviedb.org/3"
+  private let baseUrl = "https://api.themoviedb.org/3"
+  private let apiKey = {
+    guard let key = Bundle.main.object(forInfoDictionaryKey: "TMDB_API_KEY") as? String else {
+        // This fatalError will crash the app during development if the key
+        // is missing, preventing us from shipping a broken app.
+        fatalError("TMDB_API_KEY must be set in Info.plist and AppSekrets.xcconfig")
+    }
+    return key
+}()
 
   public init() {}
 
