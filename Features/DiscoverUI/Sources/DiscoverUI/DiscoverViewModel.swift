@@ -22,15 +22,26 @@ class DiscoverViewModel: ObservableObject {
     // We need an instance of our data repository to fetch data.
     // In a real app, we'd use Dependency Injection here, but for now,
     // we'll create it directly.
-    private let dataRepository = DataLayer() // This is a simplified placeholder for the repository/use case
+  private let showRepository: ShowRepository
+  private var cancellables = Set<AnyCancellable>()
+
+  init(showRepository: ShowRepository = ShowRepositoryImpl()) {
+    self.showRepository = showRepository
+  }
 
   func fetchAllCategories() {
           // We loop through every case defined in our enum.
           for category in DiscoverCategory.allCases {
-              // For now, we'll just populate each with unique sample data.
-              // In a real implementation, we would call a different repository
-              // function for each category.
-              showsByCategory[category] = sampleData(for: category)
+            showRepository.fetchTrendingShows()
+              .receive(on: DispatchQueue.main)
+              .sink(receiveCompletion: { completion in
+                if case .failure(let error) = completion {
+                  print("Error fetching shows: \(error.localizedDescription)")
+                }
+              }, receiveValue: { [weak self] shows in
+                self?.showsByCategory[category] = shows
+
+              }).store(in: &cancellables)
           }
       }
 

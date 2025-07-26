@@ -5,6 +5,8 @@
 //  Created by Ashish Mohite on 20/07/25.
 //
 
+import DomainLayer
+
 struct ShowDTO: Decodable, Identifiable {
   let adult: Bool
   let backdropPath: String
@@ -34,5 +36,9 @@ struct ShowDTO: Decodable, Identifiable {
       case voteAverage = "vote_average"
       case voteCount = "vote_count"
       case originCountry = "origin_country"
+  }
+
+  func toDomainModel() -> Show {
+    Show(id: id, title: name, posterPath: posterPath, backdropPath: backdropPath)
   }
 }
