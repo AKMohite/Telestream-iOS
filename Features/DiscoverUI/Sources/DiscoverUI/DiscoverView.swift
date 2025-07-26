@@ -7,6 +7,7 @@
 
 import SwiftUI
 import DesignSystem
+import UIComponents
 
 public struct DiscoverView: View {
     @StateObject private var viewModel = DiscoverViewModel()
@@ -32,11 +33,8 @@ public struct DiscoverView: View {
                                     HStack(spacing: 16) {
                                         if let shows = viewModel.showsByCategory[category] {
                                             ForEach(shows, id: \.id) { show in
-                                                Text(show.title)
-                                                    .foregroundColor(.white)
-                                                    .padding()
-                                                    .background(Color.gray.opacity(0.2))
-                                                    .cornerRadius(8)
+                                                ShowPosterCard(show: show)
+                                                .frame(width: 150)
                                             }
                                         }
                                     }

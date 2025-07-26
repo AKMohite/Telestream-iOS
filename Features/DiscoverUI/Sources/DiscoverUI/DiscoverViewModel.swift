@@ -37,7 +37,10 @@ class DiscoverViewModel: ObservableObject {
   private func sampleData(for category: DiscoverCategory) -> [Show] {
           return [
               .init(id: Int.random(in: 1...1000), title: "\(category.title) Show 1", posterPath: nil, backdropPath: nil),
-              .init(id: Int.random(in: 1...1000), title: "\(category.title) Show 2", posterPath: nil, backdropPath: nil)
+              .init(id: Int.random(in: 1...1000), title: "\(category.title) Show 2", posterPath: nil, backdropPath: nil),
+              .init(id: Int.random(in: 1...1000), title: "\(category.title) Show 3", posterPath: nil, backdropPath: nil),
+              .init(id: Int.random(in: 1...1000), title: "\(category.title) Show 4", posterPath: nil, backdropPath: nil),
+              .init(id: Int.random(in: 1...1000), title: "\(category.title) Show 5", posterPath: nil, backdropPath: nil)
           ]
       }
 }
